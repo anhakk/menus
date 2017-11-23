@@ -8,6 +8,7 @@ html {
         rgba(255,255,255,0.9),
         rgba(255,255,255,0.1)), url("img/menu_content_bg.png");
     background-size: cover;
+    background-attachment: fixed;
 }
 
 body {
@@ -24,6 +25,8 @@ body {
     text-shadow: 4px 4px 4px #2d2d2d;
     letter-spacing: 0.3em;
     padding-top: 40px;
+    position: relative;
+    z-index: -1;
 }
 
 #nav_container {
@@ -32,26 +35,6 @@ body {
     float: left;
 }
 
-.nav_title {
-    width: 10%;
-    margin: 0 auto;
-    background-color: brown;
-    position: absolute;
-    top: 130px;
-    text-align: center;
-    font-size: 1.5em;
-    letter-spacing: 0.1em;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border: 3px solid yellow;
-    transition: 800ms;
-}
-
-.nav_title:hover {
-    background-color: rgba(255,255,255,0);
-    color: #000;
-    letter-spacing: 0.3em;
-}
 .left {
     left: 20%;
 }
@@ -103,6 +86,7 @@ body {
 .inner_menu ul, .inner_menu_js ul {
     display: none;
     transition: 800ms;
+    margin-top: 19px;
 }
 
 .inner_menu:hover ul {
@@ -118,6 +102,11 @@ body {
     float: none;
     padding: 10px 0;
     background-color: rgba(45,45,45,0.8);
+    transition: 300ms;
+}
+
+.inner_menu li:hover, .inner_menu_js li:hover {
+    background-color: rgba(100,100,100,1.0);
 }
 
 .title_line {
@@ -149,4 +138,17 @@ body {
 
 .right_align {
     float: right;
+}
+
+/* Narrow screen settings */
+@media screen and (max-width: 800px) {
+    body {
+        overflow: auto;
+    }
+    
+    .textbox {
+        width: 85%;
+        margin: 20px auto;
+        float: none;
+    }
 }

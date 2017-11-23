@@ -13,7 +13,6 @@
         </div>
         <div id="nav_container">
             <div id="first_nav" class="nav_elem">
-                <div class="nav_title left">CSS (hover)</div>
                 <ul>
                     <li class="inner_menu">Title 1<div class="title_line"></div>
                         <ul>
@@ -45,7 +44,6 @@
                 </ul>
             </div>
             <div id="second_nav" class="nav_elem">
-                <div class="nav_title right">JS (click)</div>
                  <ul>
                     <li class="inner_menu_js hidden">Title 1<div class="title_line"></div>
                         <ul>
@@ -90,14 +88,25 @@
             </div>
         </div>
         <script>
+            // Click function for the right dropdown menu
             $(".inner_menu_js").click(function() {
-                if ($(this).hasClass("hidden")) {
-                    $(this).removeClass("hidden");
-                    $(this).children("ul").css("display","block");
-                } else {
+                // Keep only one menu open at a time
+                $(".inner_menu_js").siblings().children("ul").css("display","none");
+                $(".inner_menu_js").siblings().addClass("hidden");
+                // Check if menu is already open
+                if (!$(this).hasClass("hidden")) {
                     $(this).addClass("hidden");
                     $(this).children("ul").css("display","none");
+                } else {
+                    $(this).removeClass("hidden");
+                    $(this).children("ul").css("display","block");
                 }
+            });
+            // Hide menus when clicked outside
+            $("body").click(function(event) {
+              if(!$(event.target).is("#second_nav, .inner_menu_js")) {
+                  $(".inner_menu_js").children("ul").css("display","none");
+              }                  
             });
         </script>
     </body>
